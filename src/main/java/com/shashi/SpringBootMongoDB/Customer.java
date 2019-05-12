@@ -1,5 +1,7 @@
 package com.shashi.SpringBootMongoDB;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
@@ -13,8 +15,9 @@ public class Customer {
 
     public String firstName;
     public String lastName;
+    public Date dataOfBorth;
 
-    public Customer() {}
+	public Customer() {}
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
@@ -44,7 +47,15 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-    
+    public Date getDataOfBorth() {
+		return dataOfBorth;
+	}
+
+	public void setDataOfBorth(Date dataOfBorth) {
+		this.dataOfBorth = dataOfBorth;
+	}
+
+   
     
     
 }
