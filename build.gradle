@@ -47,8 +47,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-task wrapper( type: Wrapper, description: "create a gradlew" ) {
-    gradleVersion = '2.0'
-}
 
 
