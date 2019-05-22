@@ -30,8 +30,8 @@ publishing {
 	repositories {
 		maven {
 			credentials {
-				username 'admin'
-				password 'dalmia123'
+				username 'shashi'
+				password 'shashi1234'
 			}
 			url = repos.shashiSnapshot
 		}
