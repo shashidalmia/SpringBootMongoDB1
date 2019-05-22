@@ -5,7 +5,7 @@ jar {
 }
 
 def newVersion
-def baseRepoURL='https://nexus:8443/repository/maven-public/'
+def baseRepoURL='https://nexus:8443/repository/Snapshot/'
 
 task printVersion {
 	doFirst {
