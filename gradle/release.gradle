@@ -1,0 +1,54 @@
+apply plugin: 'maven-publish'
+
+jar {
+	archiveName='customerservice-rest.jar'
+}
+
+def newVersion
+def baseRepoURL='https://nexus:8443/repository'
+
+task printVersion {
+	doFirst {
+		newVersion = version
+		print "release first: " + version
+	}
+	
+	doLast {
+		print "release first: " + version
+	}
+}
+
+publishing {
+	publications {
+//		distributions(MavenPublication) {
+		maven(MavenPublication) {
+			groupId = 'com.shashi'
+			artifactId = 'customerservice-rest'
+			version = project.version
+			from components.java
+		}
+	}
+	repositories {
+		maven {
+			credentials {
+				username 'shashi'
+				password 'shashi1234'
+			}
+			url = repos.shashiSnapshot
+		}
+	}
+}
+
+rootProject.file('config').listFiles().each {
+	def baseTaskName = "${dir.name.capitalize()}Zip"
+	def zipTask = task(type: Zip, "generate$baseTaskName") {
+	doFirst {
+			project.mkdir('build')
+		}
+	archiveName = "${dir.name}.zip"
+	destinationDir = file("build")
+	from fileTree(dir)
+	}
+	
+	publishing.publications.maven.artifacts.artifact source: zipTask, classifier: dir.name, extension: 'zip'
+}

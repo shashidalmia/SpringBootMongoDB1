@@ -1,8 +1,8 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.3.RELEASE'
-		repos = [ shashiSnapshot : "http://35.188.197.187:8081/repository/snapshot/",
-				  shashiRelease  : "http://35.188.197.187:8081/repository/release/"
+		repos = [ shashiSnapshot : "https://nexus:8443/repository/snapshot/",
+				  shashiRelease  : "https://nexus:8443/repository/release/"
 				]
 	}
 	repositories {
@@ -11,18 +11,28 @@ buildscript {
 		maven { url repos.shashiRelease }
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
 	}
 }
 
 plugins {
     id 'java-library'
+    id 'java-library-distribution'
 }
 
+
+apply from: 'gradle/version.gradle'
+apply from: 'gradle/release.gradle'
+
 group = 'com.shashi'
+
+
 //version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+task release(dependsOn: ['build', 'publish'])
+
 
 jar {
 	baseName='customerservice-rest'
