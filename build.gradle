@@ -1,7 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.3.RELEASE'
-		repos = [ shashiSnapshot : "https://nexus:8443/repository/snapshot/",
+		repos = [ shashiSnapshot : "https://nexus:8443/repository/maven-public/",
 				  shashiRelease  : "https://nexus:8443/repository/release/"
 				]
 	}
