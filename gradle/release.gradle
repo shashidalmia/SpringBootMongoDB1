@@ -21,8 +21,8 @@ task printVersion {
 publishing {
 	publications {
 		distributions(MavenPublication) {
-//			groupId = 'com.shashi'
-//			artifactId = 'customerservice-rest'
+			groupId = 'com.shashi'
+			artifactId = 'customerservice-rest'
 			version = project.version
 			from components.java
 		}
