@@ -1,7 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.3.RELEASE'
-		repos = [ shashiSnapshot : "https://nexus.shashimarwadi.com:8443/repository/maven-central/",
+		repos = [ shashiSnapshot : "http://nexus2.shashimarwadi.com:8081/nexus/content/repositories/snapshots/",
 				  shashiRelease  : "https://nexus.shashimarwadi.com:8443/repository/release/"
 				]
 	}
@@ -15,19 +15,18 @@ buildscript {
 	}
 }
 
-plugins {
-    id 'java-library'
-    id 'java-library-distribution'
+group = 'com.shashi'
+
+allprojects  {
+    apply plugin:  'java-library'
+    apply plugin: 'java-library-distribution'
 }
 
 
-apply from: 'gradle/version.gradle'
+
+//apply from: 'gradle/version.gradle'
 apply from: 'gradle/release.gradle'
 
-group = 'com.shashi'
-
-
-//version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -35,9 +34,13 @@ task release(dependsOn: ['build', 'publish'])
 
 
 jar {
-	baseName='customerservice-rest'
-	version="${version}"
+//	baseName='customerservice-rest'
+	baseName='SpringBootMongoDB1'
+//	version="${version}"
 }
+
+
+
 
 repositories {
     jcenter()

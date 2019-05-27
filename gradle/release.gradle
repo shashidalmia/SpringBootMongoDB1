@@ -1,11 +1,7 @@
 apply plugin: 'maven-publish'
 
-jar {
-	archiveName='customerservice-rest.jar'
-}
-
 def newVersion
-def baseRepoURL='https://nexus.shashimarwadi.com:8443/repository/maven-central/'
+def baseRepoURL='http://nexus2.shashimarwadi.com:8081/nexus/content/repositories/snapshots/'
 
 task printVersion {
 	doFirst {
@@ -21,10 +17,10 @@ task printVersion {
 publishing {
 	publications {
 		distributions(MavenPublication) {
-			groupId = 'com.shashi'
-			artifactId = 'customerservice-rest'
-			version = project.version
-			from components.java
+//			groupId = 'com.shashi'
+//			artifactId = 'customerservice-rest'
+//			version = project.version
+//			from components.java
 		}
 	}
 	repositories {
